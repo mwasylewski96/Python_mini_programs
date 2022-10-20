@@ -2,7 +2,7 @@ with open("names_and_surnames.txt", "r", encoding="UTF-8") as file:
     readfile = file.readlines()
 SeparatedElements = []
 for line in readfile:
-    temp = line.strip()
+    temp = line.replace("\n", "")
     SeparatedElements.append(temp.split(" "))
 print(SeparatedElements)
 SeparatedNames = [i[0] for i in SeparatedElements]
