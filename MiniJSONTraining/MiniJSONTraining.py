@@ -1,5 +1,5 @@
 import json
-
+import pprint #Do ladnego wyswietlania
 "Mini program zapisujący film do formatu JSON a potem odczytujący plik JSON z powrotem do Pythona"
 
 meczePolskinaMundialach = {
@@ -24,5 +24,8 @@ with open("Polska Na mundialach w XX wieku.json", encoding="UTF-8") as plik:
 odczytywanieJSONMeczePolskinaMundialach["mundial_2006"] = tuple(odczytywanieJSONMeczePolskinaMundialach["mundial_2006"])
 odczytywanieJSONMeczePolskinaMundialach["mundial_2018"] = tuple(odczytywanieJSONMeczePolskinaMundialach["mundial_2006"])
 
-for line in odczytywanieJSONMeczePolskinaMundialach:
-    print(line, odczytywanieJSONMeczePolskinaMundialach[line])
+
+# for line in odczytywanieJSONMeczePolskinaMundialach:
+#     print(line, odczytywanieJSONMeczePolskinaMundialach[line])
+pprint.pprint(odczytywanieJSONMeczePolskinaMundialach)
+
