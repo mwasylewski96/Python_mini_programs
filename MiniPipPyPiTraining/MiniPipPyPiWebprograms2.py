@@ -28,3 +28,4 @@ else:
     completedTaskFrequencyByUser = count_task_frequency(tasks)
     usersWithTopCompletedTasks = users_with_top_completed_tasks(completedTaskFrequencyByUser)
     print("Wręczamy ciasteczko mistrzunia dyscypliny do uzytkownikow o id:", usersWithTopCompletedTasks)
+    print(completedTaskFrequencyByUser)
