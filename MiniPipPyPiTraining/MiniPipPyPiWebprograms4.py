@@ -39,11 +39,31 @@ for user in users:
         print("Wręczamy ciasteczko mistrzunia dyscypliny do uzytkownika o imieniu:", user["id"])
         usersWithTopCompletedTasks.remove(user["id"])
 """
+"""
 # sposob 2
 for userId in usersWithTopCompletedTasks:
     #r = requests.get("https://jsonplaceholder.typicode.com/users/"+str(userId))
     r = requests.get("https://jsonplaceholder.typicode.com/users", params="id="+str(userId))
     user = r.json()
     print("Wręczamy ciasteczko mistrzunia dyscypliny do uzytkownikow o imieniu: ", user[0]["name"])
-
+"""
 # sposob 3
+
+def change_list_into_conj_of_params(my_list,key="id"):
+    conj_param = key + "="
+
+    lastIteration = len(my_list)
+    i = 0
+    for item in my_list:
+        i += 1
+        if (i == lastIteration):
+            conj_param += str(item)
+        else:
+            conj_param += str(item) + "&id="
+    return conj_param
+conj_param = change_list_into_conj_of_params(usersWithTopCompletedTasks)
+#conj_param = change_list_into_conj_of_params([2,3,4,5])
+r = requests.get("https://jsonplaceholder.typicode.com/users", params=conj_param)
+users = r.json()
+for user in users:
+    print("Wręczamy ciasteczko mistrzunia dyscypliny do uzytkownikow o imieniu: ", user["name"])
