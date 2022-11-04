@@ -32,6 +32,9 @@ def add_favourite_cat(catId, userId):
     catData = {"image_id": catId, "sub_id": userId}
     r = requests.post("https://api.thecatapi.com/v1/favourites", json = catData, headers=Credentials.headers)
     return get_json_content_from_response(r)
+def remove_favourite_cat(userId, favouriteCatId):
+    r = requests.delete("https://api.thecatapi.com/v1/favourites/"+favouriteCatId, headers=Credentials.headers)
+    return get_json_content_from_response(r)
 userId = "agh2m"
 name = "Arkadiusz"
 print("Witaj ", name)
@@ -46,3 +49,11 @@ if addToFavourites.upper() == "T":
     print(add_favourite_cat(randomCat[0]["id"],userId))
 else:
     print("No to lipa...")
+favouriteCatsByID = {
+    favouriteCat["id"] : favouriteCat["image"]["url"]
+    for favouriteCat in favouriteCats
+}
+
+print(favouriteCatsByID)
+favouriteCatId = input("Czy nie masz serca i chcesz usunąć kotka z ulubionych?")
+print(remove_favourite_cat(userId, favouriteCatId))
